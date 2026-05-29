@@ -409,8 +409,9 @@ if st.session_state.results_df is not None:
             min_score = st.slider("Minimum Score", 0, 100, 60)
         
         with col3:
-            show_rows = st.number_input("Show top N rows", min_value=10, max_value=len(results_df), value=50)
-        
+            # show_rows = st.number_input("Show top N rows", min_value=10, max_value=len(results_df), value=50)
+            show_rows = st.number_input("Show top N rows", min_value=10, max_value=len(results_df),
+                                        value=min(50, len(results_df)))
         # Apply filters
         filtered_df = results_df[results_df['Tier'].isin(tier_filter)]
         filtered_df = filtered_df[filtered_df['Total_Score'] >= min_score]
